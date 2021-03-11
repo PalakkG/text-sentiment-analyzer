@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_TEXT, ANALYZED_TEXT } from '../actions/index'
 import AnalysisRequest from "../data/AnalysisRequest";
 
 function UserInput() {
@@ -8,7 +9,7 @@ function UserInput() {
     const dispatch = useDispatch();
 
     const updateText = (e) => dispatch({
-        type: 'update-text',
+        type: UPDATE_TEXT,
         text: e.target.value
     });
 
@@ -17,7 +18,7 @@ function UserInput() {
         sentiments = await AnalysisRequest(data)
         
         dispatch({
-            type: 'analyzed',
+            type: ANALYZED_TEXT,
             sentiments: sentiments,
             analyzedText: data
         });
